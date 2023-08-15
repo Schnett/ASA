@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://unpkg.com/image-compare-viewer@1.5.0/dist/image-compare-viewer.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html * {
+  font-family: Nunito, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333; /* You can change the background color to your preference */
+  color: #fff; /* You can change the text color to your preference */
+  text-align: center;
+  padding: 10px 0;
+}
+
+header {
+  z-index: 100;
+  position: relative;
+  width: 100%;
+  background-color: #333; /* You can change the background color to your preference */
+  color: #fff; /* You can change the text color to your preference */
+  text-align: center;
+  padding: 10px 0;
+}
+
+main {
+  margin-top: 1px;
+}
+
+.column {
+  float: left;
+  padding: 1%;
+}
+
+.left, .right {
+  width: 17%;
+}
+
+.middle {
+  width: 66%;
+}
+
+.spacer {
+  padding-bottom: 1%;
+}
+
+.bigspacer {
+  padding-bottom: 10%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+  <header>
+    <h1>Hello </h1>
+  </header>
+  <footer>
+    <div class="code-block" id="copyCode">r.VolumetricCloud=0 | bla=1 <i class="fa fa-copy"></i>
+    </div>
+  </footer>
+  <main>
+    <div class="row">
+      <div class="column left"></div>
+      <div class="column middle">
+        <div class="image-compare" data-before="test" data-after="test2">
+          <img src="img/cloud.jpg"/>
+          <img src="img/cloud0.jpg"/>
+        </div>
+        <div class="spacer"></div>
+        <div class="image-compare" data-before="test3" data-after="test4">
+          <img src="img/cloud.jpg"/>
+          <img src="img/cloud0.jpg"/>
+        </div>
+        <div class="bigspacer"></div>
+      </div>
+      <div class="column right"></div>
+    </div>
+  </main>   
+</body>
+
+<script>
+  let imageCompareViewers = document.querySelectorAll(".image-compare");
+  console.log(imageCompareViewers.length);
+  let config = 
+  {
+    controlColor: "#FFFFFF",
+    controlShadow: true,
+    addCircle: false,
+    addCircleBlur: true,
+
+    startingPoint: 50,
+    showLabels: true,
+    labelOptions: {
+      before: 'Before',
+      after: 'After'
+    }
+  };
+
+  imageCompareViewers.forEach((element, index) => {
+
+    // load starting point from local storage
+    let startingPoints = [];
+    if (localStorage.getItem("startingPoints") != null)
+      startingPoints = JSON.parse(localStorage.startingPoints);
+    startingPoints[index] != null ? config.startingPoint = startingPoints[index] : config.startingPoint = 50;
+
+    // set labels from dataset
+    config.labelOptions.before = element.dataset.before;
+    config.labelOptions.after = element.dataset.after;
+
+    let imageCompare = new ImageCompare(element, config);
+    imageCompare.mount();
+    imageCompare.index = index;
+    imageCompare.el.addEventListener("mouseup", () => { 
+      let startingPoints = [];
+      if (localStorage.getItem("startingPoints") != null)
+        startingPoints = JSON.parse(localStorage.startingPoints);
+      startingPoints[imageCompare.index] = 100 - parseInt(String(imageCompare.wrapper.style.width).slice(5, 7));
+      localStorage.setItem("startingPoints", JSON.stringify(startingPoints));
+    });
+  });
+</script>
+
+<script>
+  // JavaScript to handle the copy functionality
+  const codeBlock = document.getElementById('copyCode');
+
+  codeBlock.addEventListener('click', () => {
+    navigator.clipboard.writeText(codeBlock.textContent);
+  });
+</script>
+
+
+</html>
