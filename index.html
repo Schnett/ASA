@@ -85,7 +85,6 @@
     .caption {
       text-align: center;
       font-size: small;
-      line-height: 1px;
     }
 
     .row:after {
@@ -112,75 +111,80 @@
             <img src="img/cloud0.jpg"/>
             <img src="img/cloud.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Medium</p>
+          <p class="performance">Performance Impact: <b>Medium</b></p>
+          <p class="caption">Volumetric Clouds: Disable to save performance.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.VolumetricFog 0" data-after="r.VolumetricFog 1">
             <img src="img/fog.jpg"/>
             <img src="img/fog1.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Low</p>
+          <p class="performance">Performance Impact: <b>Low</b></p>
+          <p class="caption">Volumetric Fog: Disable to save performance.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="sg.GlobalIlluminationQuality 1" data-after="sg.GlobalIlluminationQuality 2">
             <img src="img/lumen0.jpg"/>
             <img src="img/lumen1.jpg"/>
           </div>
-          <p class="performance">Performance Impact: High</p>
-          <p class="caption">Even with Lumen enabled, you should disable Lumen Reflections (r.Lumen.Reflections.Allow 0) to save performance.</p>
+          <p class="performance">Performance Impact: <b>High</b></p>
+          <p class="caption">Lumen: Dynamic Global Illumnation is expensive. You won't see a big difference unless you explore caves with a torch. Even with Lumen enabled, you should disable Lumen Reflections (r.Lumen.Reflections.Allow 0) to save performance.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.SkylightIntensityMultiplier 1" data-after="r.SkylightIntensityMultiplier 3">
             <img src="img/skylight1.jpg"/>
             <img src="img/skylight3.jpg"/>
           </div>
-          <p class="performance">Performance Impact: None</p>
-          <p class="caption">If Lumen and Volumetric Clouds are disabled, the shadows will be pretty dark. Increasing the Skylight Intesity can help there.</p>
+          <p class="performance">Performance Impact: <b>None</b></p>
+          <p class="caption">Skylight: If Lumen and Volumetric Clouds are disabled, the shadows will be dark. Increasing the Skylight Intesity can help there.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0" data-after="r.Shadow.Virtual.Enable 1">
             <img src="img/distancefieldnocascade.jpg"/>
             <img src="img/virtualshadow.jpg"/>
           </div>
-          <p class="performance">Performance Impact: High</p>
-          <p class="caption">Dynamic shadows are really expensive. You can disable them and only keep static Distance Field Shadows. Characters and Dinos wont cast shadows.</p>
+          <p class="performance">Performance Impact: <b>High</b></p>
+          <p class="caption">Virtual Shadow Maps: Dynamic shadows are expensive. You can disable them and only keep static Distance Field Shadows. Note: Characters and Dinos won't cast shadows with this option.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.ContactShadows 0" data-after="r.ContactShadows 1">
             <img src="img/distancefield.jpg"/>
             <img src="img/distancefield+contact.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Low</p>
+          <p class="performance">Performance Impact: <b>Low</b></p>
+          <p class="caption">Contact Shadows: Small detail shadows for grass, rocks.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="wp.Runtime.HLOD 0" data-after="wp.Runtime.HLOD 1">
             <img src="img/wpHLOD0.jpg"/>
             <img src="img/wpHLOD1.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Medium</p>
+          <p class="performance">Performance Impact: <b>Medium</b></p>
+          <p class="caption">HLODs: Can be disabled to save performance.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="sg.FoliageQuality 0" data-after="sg.FoliageQuality 2">
             <img src="img/grass0.jpg"/>
             <img src="img/grass2.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Medium</p>
+          <p class="performance">Performance Impact: <b>Medium</b></p>
+          <p class="caption">Landscape Grass: Can be reduced by setting sg.FoliageQuality to 1 or disabled with 0</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.Nanite.MaxPixelsPerEdge 1" data-after="r.Nanite.MaxPixelsPerEdge 3">
             <img src="img/nanite1.jpg"/>
             <img src="img/nanite0.jpg"/>
           </div>
-          <p class="performance">Performance Impact: Low</p>
+          <p class="performance">Performance Impact: <b>Low</b></p>
+          <p class="caption">Nanite: By default Nanite tries to opt for 1 triangle per pixel. Increasing this value helps with performance. You will lose mesh details especially for trees.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.PostProcessing.DisableMaterials 0" data-after="r.PostProcessing.DisableMaterials 1">
             <img src="img/underwater.jpg"/>
             <img src="img/underwater1.jpg"/>
           </div>
-          <p class="performance">Performance Impact: None</p>
-
-        
+          <p class="performance">Performance Impact: <b>None</b></p>
+          <p class="caption">Post Processing Materials: This option will also disable TEK Helmet, Snow Owl Vision and other Post Processing Effects.</p>        
           <div class="bigspacer"></div>
         </div>
         <div class="column right"></div>
@@ -260,7 +264,7 @@
         startingPoints[imageCompare.index] = startingPoint;
         localStorage.setItem("startingPoints", JSON.stringify(startingPoints));
 
-        startingPoint < 50 ? commandStorage[imageCompare.index] = 0 : commandStorage[imageCompare.index] = 1;
+        startingPoint > 50 ? commandStorage[imageCompare.index] = 0 : commandStorage[imageCompare.index] = 1;
         updateFooter();
       });
       updateFooter();
