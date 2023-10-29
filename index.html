@@ -167,9 +167,10 @@
                   
               <div class="caption">For Quality & Good Performance</div>
               </div>
-            </div>a
+            </div>
             
           <p class="performance">If you cannot enable DLSS, use <b>sg.ResolutionQuality 100</b></p>
+          <div class="spacer"></div>
           <p class="performance">Use the <b>image comparison slider</b> to chose the option. <b>Click on the text</b> on the bottom of the page to copy the command. Then paste it into the ARK Console.</b></p>
           <div class="spacer"></div>
           <div class="image-compare" data-before="r.VolumetricCloud 0" data-after="r.VolumetricCloud 1">
@@ -249,7 +250,15 @@
             <img src="img/underwater1.jpg"/>
           </div>
           <p class="performance">Performance Impact: <b>None</b></p>
-          <p class="caption">Post Processing Materials: This option will also disable TEK Helmet, Snow Owl Vision and other Post Processing Effects.</p>        
+          <p class="caption">Post Processing Materials: This option will also disable TEK Helmet, Snow Owl Vision and other Post Processing Effects.</p>      
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="show InstancedFoliage" data-after="show InstancedFoliage">
+            <img src="img/nofoliage.jpg"/>
+            <img src="img/foliage.jpg"/>
+          </div>
+          <p class="performance">Performance Impact: <b>High</b></p>
+          <p class="caption">You can instaced foliage with the 'show InstancedFoliage' command.</p>
           <div class="bigspacer"></div>
         </div>
         <div class="column right"></div>
@@ -270,7 +279,8 @@
       ["wp.Runtime.HLOD 0", "wp.Runtime.HLOD 1"],
       ["grass.Enable 0", "grass.Enable 1"],
       ["r.Nanite.MaxPixelsPerEdge 1", "r.Nanite.MaxPixelsPerEdge 3"],
-      ["r.PostProcessing.DisableMaterials 0", "r.PostProcessing.DisableMaterials 1"]
+      ["r.PostProcessing.DisableMaterials 0", "r.PostProcessing.DisableMaterials 1"],
+      ["", ""]
     ]
 
     // get footer
