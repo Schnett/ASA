@@ -1,158 +1,251 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<script src="https://unpkg.com/image-compare-viewer@1.5.0/dist/image-compare-viewer.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
-<style>
-* {
-  box-sizing: border-box;
-}
-
-html * {
-  font-family: Nunito, sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-footer {
-  z-index: 100;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #333; /* You can change the background color to your preference */
-  color: #fff; /* You can change the text color to your preference */
-  text-align: center;
-  padding: 10px 0;
-}
-
-header {
-  z-index: 100;
-  position: relative;
-  width: 100%;
-  background-color: #333; /* You can change the background color to your preference */
-  color: #fff; /* You can change the text color to your preference */
-  text-align: center;
-  padding: 10px 0;
-}
-
-main {
-  margin-top: 1px;
-}
-
-.column {
-  float: left;
-  padding: 1%;
-}
-
-.left, .right {
-  width: 17%;
-}
-
-.middle {
-  width: 66%;
-}
-
-.spacer {
-  padding-bottom: 1%;
-}
-
-.bigspacer {
-  padding-bottom: 10%;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
-</head>
-
-<body>
-  <header>
-    <h1>Hello </h1>
-  </header>
-  <footer>
-    <div class="code-block" id="copyCode">r.VolumetricCloud=0 | bla=1 <i class="fa fa-copy"></i>
-    </div>
-  </footer>
-  <main>
-    <div class="row">
-      <div class="column left"></div>
-      <div class="column middle">
-        <div class="image-compare" data-before="test" data-after="test2">
-          <img src="img/cloud.jpg"/>
-          <img src="img/cloud0.jpg"/>
-        </div>
-        <div class="spacer"></div>
-        <div class="image-compare" data-before="test3" data-after="test4">
-          <img src="img/cloud.jpg"/>
-          <img src="img/cloud0.jpg"/>
-        </div>
-        <div class="bigspacer"></div>
-      </div>
-      <div class="column right"></div>
-    </div>
-  </main>   
-</body>
-
-<script>
-  let imageCompareViewers = document.querySelectorAll(".image-compare");
-  console.log(imageCompareViewers.length);
-  let config = 
-  {
-    controlColor: "#FFFFFF",
-    controlShadow: true,
-    addCircle: false,
-    addCircleBlur: true,
-
-    startingPoint: 50,
-    showLabels: true,
-    labelOptions: {
-      before: 'Before',
-      after: 'After'
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://unpkg.com/image-compare-viewer@1.5.0/dist/image-compare-viewer.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+    <style>
+    * {
+      box-sizing: border-box;
     }
-  };
 
-  imageCompareViewers.forEach((element, index) => {
+    html * {
+      font-family: Nunito, sans-serif;
+    }
 
-    // load starting point from local storage
-    let startingPoints = [];
-    if (localStorage.getItem("startingPoints") != null)
-      startingPoints = JSON.parse(localStorage.startingPoints);
-    startingPoints[index] != null ? config.startingPoint = startingPoints[index] : config.startingPoint = 50;
+    body {
+      margin: 0;
+      padding: 0;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
 
-    // set labels from dataset
-    config.labelOptions.before = element.dataset.before;
-    config.labelOptions.after = element.dataset.after;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    body::-webkit-scrollbar {
+      display: none;
+    }
 
-    let imageCompare = new ImageCompare(element, config);
-    imageCompare.mount();
-    imageCompare.index = index;
-    imageCompare.el.addEventListener("mouseup", () => { 
+    footer {
+      z-index: 100;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333; /* You can change the background color to your preference */
+      color: #fff; /* You can change the text color to your preference */
+      min-height: 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    header {
+      z-index: 100;
+      position: relative;
+      width: 100%;
+      background-color: #333; /* You can change the background color to your preference */
+      color: #fff; /* You can change the text color to your preference */
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    main {
+      margin-top: 1px;
+    }
+
+    .column {
+      float: left;
+      padding: 1%;
+    }
+
+    .left, .right {
+      width: 17%;
+    }
+
+    .middle {
+      width: 66%;
+    }
+
+    .spacer {
+      padding-bottom: 1%;
+    }
+
+    .bigspacer {
+      padding-bottom: 10%;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Hello </h1>
+    </header>
+    <footer>
+      <div id="copyFooter">Footer</i>
+      </div>
+    </footer>
+    <main>
+      <div class="row">
+        <div class="column left"></div>
+        <div class="column middle">
+          <div class="image-compare" data-before="r.VolumetricCloud 0" data-after="r.VolumetricCloud 1">
+            <img src="img/cloud0.jpg"/>
+            <img src="img/cloud.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.VolumetricFog 0" data-after="r.VolumetricFog 1">
+            <img src="img/fog.jpg"/>
+            <img src="img/fog1.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="sg.GlobalIlluminationQuality 1" data-after="sg.GlobalIlluminationQuality 2">
+            <img src="img/lumen0.jpg"/>
+            <img src="img/lumen1.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.SkylightIntensityMultiplier 1" data-after="r.SkylightIntensityMultiplier 3">
+            <img src="img/skylight1.jpg"/>
+            <img src="img/skylight3.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0" data-after="r.Shadow.Virtual.Enable 1">
+            <img src="img/distancefieldnocascade.jpg"/>
+            <img src="img/virtualshadow.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="wp.Runtime.HLOD 0" data-after="wp.Runtime.HLOD 1">
+            <img src="img/wpHLOD0.jpg"/>
+            <img src="img/wpHLOD1.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="sg.FoliageQuality 0" data-after="sg.FoliageQuality 2">
+            <img src="img/grass0.jpg"/>
+            <img src="img/grass2.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.Nanite.MaxPixelsPerEdge 1" data-after="r.Nanite.MaxPixelsPerEdge 3">
+            <img src="img/nanite1.jpg"/>
+            <img src="img/nanite0.jpg"/>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.PostProcessing.DisableMaterials 0" data-after="r.PostProcessing.DisableMaterials 1">
+            <img src="img/underwater.jpg"/>
+            <img src="img/underwater1.jpg"/>
+          </div>
+
+        
+          <div class="bigspacer"></div>
+        </div>
+        <div class="column right"></div>
+      </div>
+    </main>   
+  </body>
+
+  <script>
+    // consolecommand
+    let commandStorage = [];
+    let commandList = [
+      ["r.VolumetricCloud 0", "r.VolumetricCloud 1"],
+      ["r.VolumetricFog 0", "r.VolumetricFog 1"],
+      ["sg.GlobalIlluminationQuality 1", "sg.GlobalIlluminationQuality 2"],
+      ["r.SkylightIntensityMultiplier 1", "r.SkylightIntensityMultiplier 3"],
+      ["r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0 | r.DistanceFieldShadowing 1", "r.Shadow.Virtual.Enable 1"],
+      ["wp.Runtime.HLOD 0", "wp.Runtime.HLOD 1"],
+      ["sg.FoliageQuality 0", "sg.FoliageQuality 2"],
+      ["r.Nanite.MaxPixelsPerEdge 1", "r.Nanite.MaxPixelsPerEdge 3"],
+      ["r.PostProcessing.DisableMaterials 0", "r.PostProcessing.DisableMaterials 1"]
+    ]
+
+    // get footer
+    const footer = document.getElementById('copyFooter');
+
+    // copy footer text on click
+    footer.addEventListener('click', () => {
+      navigator.clipboard.writeText(footer.textContent);
+    });
+
+    // get all image compares
+    let imageCompareViewers = document.querySelectorAll(".image-compare");
+    console.log(imageCompareViewers.length);
+    let config = 
+    {
+      controlColor: "#FFFFFF",
+      controlShadow: true,
+      addCircle: false,
+      addCircleBlur: true,
+
+      startingPoint: 50,
+      showLabels: true,
+      labelOptions: {
+        before: 'Before',
+        after: 'After'
+      }
+    };
+
+    // init all image compares
+    imageCompareViewers.forEach((element, index) => {
+      // load starting point from local storage
       let startingPoints = [];
       if (localStorage.getItem("startingPoints") != null)
         startingPoints = JSON.parse(localStorage.startingPoints);
-      startingPoints[imageCompare.index] = 100 - parseInt(String(imageCompare.wrapper.style.width).slice(5, 7));
-      localStorage.setItem("startingPoints", JSON.stringify(startingPoints));
+
+      config.startingPoint = 50;
+      commandStorage[index] = 1;
+      if (startingPoints[index] != null)
+      {
+        config.startingPoint = startingPoints[index]
+        startingPoints[index] < 50 ? commandStorage[index] = 1 : commandStorage[index] = 0;
+      }
+
+      // set labels from dataset
+      config.labelOptions.before = element.dataset.before;
+      config.labelOptions.after = element.dataset.after;
+
+      let imageCompare = new ImageCompare(element, config);
+      imageCompare.mount();
+      imageCompare.index = index;
+      imageCompare.el.addEventListener("mouseup", () => { 
+        let startingPoints = [];
+        if (localStorage.getItem("startingPoints") != null)
+          startingPoints = JSON.parse(localStorage.startingPoints);
+        let startingPoint = 100 - parseInt(String(imageCompare.wrapper.style.width).slice(5, 7));
+        startingPoints[imageCompare.index] = startingPoint;
+        localStorage.setItem("startingPoints", JSON.stringify(startingPoints));
+
+        startingPoint < 50 ? commandStorage[imageCompare.index] = 0 : commandStorage[imageCompare.index] = 1;
+        updateFooter();
+      });
+      updateFooter();
     });
-  });
-</script>
 
-<script>
-  // JavaScript to handle the copy functionality
-  const codeBlock = document.getElementById('copyCode');
+    function updateFooter()
+    {
+      let commandText = '';
+      commandStorage.forEach((element, index) => {
+        if (element != null)
+          if (commandText === '')
+            commandText = commandText.concat('', commandList[index][element]);
+          else
+            commandText = commandText.concat(' | ', commandList[index][element]);
+      });
 
-  codeBlock.addEventListener('click', () => {
-    navigator.clipboard.writeText(codeBlock.textContent);
-  });
-</script>
-
-
+      footer.textContent = commandText;
+    }
+  </script>
 </html>
