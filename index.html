@@ -119,7 +119,7 @@
       <h1>ASA: Performance Guide</h1>
     </header>
     <footer>
-      <div id="copyFooter">Footer</i>
+      <div id="copyFooter">Click To Copy</i>
       </div>
     </footer>
     <main>
@@ -165,7 +165,7 @@
                     </code>
                   </pre>
                   
-              <div class="caption">For Quality & Good Performance</div>
+              <div class="caption">For better Quality & Good Performance</div>
               </div>
             </div>
             
@@ -173,7 +173,7 @@
           <div class="spacer"></div>
           <p class="performance">Use the <b>image comparison slider</b> to chose the option. <b>Click on the text</b> on the bottom of the page to copy the command. Then paste it into the ARK Console.</b></p>
           <div class="spacer"></div>
-          <div class="image-compare" data-before="r.VolumetricCloud 0" data-after="r.VolumetricCloud 1">
+          <div class="image-compare" data-before="Better Performance <br/> r.VolumetricCloud 0" data-after="r.VolumetricCloud 1">
             <img src="img/cloud0.jpg"/>
             <img src="img/cloud.jpg"/>
           </div>
@@ -181,7 +181,7 @@
           <p class="caption">Volumetric Clouds: Disable to save performance.</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="r.VolumetricFog 0" data-after="r.VolumetricFog 1">
+          <div class="image-compare" data-before="Better Performance <br/> r.VolumetricFog 0" data-after="r.VolumetricFog 1">
             <img src="img/fog.jpg"/>
             <img src="img/fog1.jpg"/>
           </div>
@@ -189,7 +189,7 @@
           <p class="caption">Volumetric Fog: Disable to save performance.</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="sg.GlobalIlluminationQuality 1" data-after="sg.GlobalIlluminationQuality 2">
+          <div class="image-compare" data-before="Better Performance <br/> sg.GlobalIlluminationQuality 1" data-after="sg.GlobalIlluminationQuality 2">
             <img src="img/lumen0.jpg"/>
             <img src="img/lumen1.jpg"/>
           </div>
@@ -205,7 +205,7 @@
           <p class="caption">Skylight: If Lumen and Volumetric Clouds are disabled, the shadows will be dark. Increasing the Skylight Intesity can help there.</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0" data-after="r.Shadow.Virtual.Enable 1">
+          <div class="image-compare" data-before="Better Performance <br/> r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0" data-after="r.Shadow.Virtual.Enable 1">
             <img src="img/distancefieldnocascade.jpg"/>
             <img src="img/virtualshadow.jpg"/>
           </div>
@@ -213,7 +213,7 @@
           <p class="caption">Virtual Shadow Maps: Dynamic shadows are expensive. You can disable them and only keep static Distance Field Shadows. Note: Characters and Dinos won't cast shadows with this option.</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="r.ContactShadows 0" data-after="r.ContactShadows 1">
+          <div class="image-compare" data-before="Better Performance <br/> r.ContactShadows 0" data-after="r.ContactShadows 1">
             <img src="img/distancefield.jpg"/>
             <img src="img/distancefield+contact.jpg"/>
           </div>
@@ -221,7 +221,7 @@
           <p class="caption">Contact Shadows: Small detail shadows for grass, rocks.</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="wp.Runtime.HLOD 0" data-after="wp.Runtime.HLOD 1">
+          <div class="image-compare" data-before="Better Performance <br/> wp.Runtime.HLOD 0" data-after="wp.Runtime.HLOD 1">
             <img src="img/wpHLOD0.jpg"/>
             <img src="img/wpHLOD1.jpg"/>
           </div>
@@ -229,7 +229,7 @@
           <p class="caption">HLODs: Can be disabled to save performance. Note: This can now be disbled in the Video Settings</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="grass.Enable 0" data-after="grass.Enable 1">
+          <div class="image-compare" data-before="Better Performance <br/> grass.Enable 0" data-after="grass.Enable 1">
             <img src="img/grass0.jpg"/>
             <img src="img/grass2.jpg"/>
           </div>
@@ -237,7 +237,7 @@
           <p class="caption">Landscape Grass: The amount of foliage can be changed by using sg.FoliageQuality 1-3 or in the Video Settings Foliage Quality: Medium-Epic</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="r.Nanite.MaxPixelsPerEdge 1" data-after="r.Nanite.MaxPixelsPerEdge 3">
+          <div class="image-compare" data-before="r.Nanite.MaxPixelsPerEdge 1" data-after="Better Performance <br/> r.Nanite.MaxPixelsPerEdge 3">
             <img src="img/nanite1.jpg"/>
             <img src="img/nanite0.jpg"/>
           </div>
@@ -349,7 +349,7 @@
     {
       let commandText = '';
       commandStorage.forEach((element, index) => {
-        if (element != null)
+        if (element != null && commandList[index][element] != "")
           if (commandText === '')
             commandText = commandText.concat('', commandList[index][element]);
           else
