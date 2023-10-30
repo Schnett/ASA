@@ -251,7 +251,15 @@
             <img src="img/underwater1.jpg"/>
           </div>
           <p class="performance">Performance Impact: <b>None</b></p>
-          <p class="caption">Post Processing Materials: This option will also disable TEK Helmet, Snow Owl Vision and other Post Processing Effects.</p>      
+          <p class="caption">Post Processing Materials: This option will also disable TEK Helmet, Snow Owl Vision and other Post Processing Effects.</p>  
+          
+          <div class="spacer"></div>
+          <div class="image-compare" data-before="r.Water.SingleLayer 0" data-after="r.Water.SingleLayer 1">
+            <img src="img/water0.jpg"/>
+            <img src="img/water1.jpg"/>
+          </div>
+          <p class="performance">Performance Impact: <b>Low</b></p>
+          <p class="caption">Water: You can disable the water via 'r.Water.SingleLayer 0' command.</p>
 
           <div class="spacer"></div>
           <div class="image-compare" data-before="show InstancedFoliage" data-after="show InstancedFoliage">
@@ -260,6 +268,7 @@
           </div>
           <p class="performance">Performance Impact: <b>High</b></p>
           <p class="caption">Instanced Foliage: You can toggle instaced foliage with the 'show InstancedFoliage' command.</p>
+
           <div class="bigspacer"></div>
         </div>
         <div class="column right"></div>
@@ -281,6 +290,7 @@
       ["grass.Enable 0", "grass.Enable 1"],
       ["r.Nanite.MaxPixelsPerEdge 1", "r.Nanite.MaxPixelsPerEdge 3"],
       ["r.PostProcessing.DisableMaterials 0", "r.PostProcessing.DisableMaterials 1"],
+      ["r.Water.SingleLayer 0", "r.Water.SingleLayer 1"],
       ["", ""]
     ]
 
