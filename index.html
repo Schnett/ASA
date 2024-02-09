@@ -181,7 +181,7 @@
             
           <p class="performance">If you cannot enable DLSS (requires NVIDIA RTX 2060 or higher), use <b>sg.ResolutionQuality 100</b></p>
           <div class="spacer"></div>
-          <p class="performance">Use the <b>image comparison slider</b> to chose the option. <b>Click on the text</b> on the bottom of the page to copy the command. Then paste it into the ARK Console.</b></p>
+          <p class="performance">Use the <b>image slider</b> to chose the command. <b>Click on the text</b> on the bottom of the page to copy the command. Then paste it into the ARK Console.</b></p>
           <div class="spacer"></div>
           <div class="image-compare" data-before="Better Performance <br/> r.VolumetricCloud 0" data-after="r.VolumetricCloud 1">
             <img src="img/cloud0.jpg"/>
@@ -243,7 +243,7 @@
           <p class="caption">HLODs: Can be disabled to save performance. Note: This can now be disbled in the Video Settings</p>
 
           <div class="spacer"></div>
-          <div class="image-compare" data-before="Better Performance <br/> sg.FoliageQuality 0" data-after="sg.FoliageQuality 1">
+          <div class="image-compare" data-before="Better Performance <br/> grass.SizeScale 0" data-after="grass.SizeScale 1 (default)">
             <img src="img/grass0.jpg"/>
             <img src="img/grass2.jpg"/>
           </div>
@@ -268,8 +268,8 @@
       ["r.SkylightIntensityMultiplier 1", "r.SkylightIntensityMultiplier 3"],
       ["r.Shadow.Virtual.Enable 0 | r.Shadow.CSM.MaxCascades 0 | r.DistanceFieldShadowing 1", "r.Shadow.Virtual.Enable 1"],
       ["r.ContactShadows 0", "r.ContactShadows 1"],
-      ["wp.Runtime.HLOD 0", "wp.Runtime.HLOD 1"],
-      ["sg.FoliageQuality 0", "sg.FoliageQuality 1"]
+      ["wp.Runtime.HLOD 0", ""],
+      ["grass.SizeScale 0", ""]
     ]
 
     // get footer
